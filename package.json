@@ -3,17 +3,13 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
-  },
-  "scripts": {
     "webpack-watch": "webpack -w",
-    "debug-mode": "node-debug ./app.js",
+    "debug-mode": "node --inspect ./bin/www",
     "express-server": "node ./bin/www",
     "dev": "concurrent --kill-others \"npm run webpack-watch\" \"npm run express-server\"",
     "debug": "concurrent --kill-others \"npm run webpack-watch\" \"npm run debug-mode\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "private": true,
   "dependencies": {
     "babel-core": "^6.22.1",
     "babel-loader": "^6.2.10",
@@ -28,6 +24,7 @@
     "express": "^4.14.1",
     "helmet": "^3.8.1",
     "jquery": "^3.1.1",
+    "morgan": "^1.9.0",
     "prop-types": "^15.5.10",
     "react": "^15.4.2",
     "react-contextify": "^0.1.0",

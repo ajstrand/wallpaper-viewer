@@ -7,15 +7,14 @@ class Images extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title:'',
-      post:'',
+      images:''
     }
-    this.loadChallenge = this.loadChallenge.bind(this);
+    this.loadImages = this.loadImages.bind(this);
   }
   componentDidMount(nextProps){
-    this.loadChallenge();
+    this.loadImages();
   }
-  loadChallenge() {
+  loadImages() {
       $.ajax({
           type: 'GET',
           dataType: 'json',
@@ -23,8 +22,7 @@ class Images extends React.Component {
           success: function(data) {
             if(data !== null && data !== undefined){
               console.log(data);
-              //this.setState({title:data.title});
-              //this.setState({post:arr});
+              this.setState({images:data});
               }
               else {
                 $('body').append('<p>could not get data from reddit api</p>');
@@ -37,22 +35,21 @@ class Images extends React.Component {
       });
   }
     render() {
-      if(this.state.post === null || this.state.post === undefined ||
-      this.state.post === ""){
-        var postArray = <Loading/>
+      if(this.state.images === null || this.state.images === undefined ||
+      this.state.images === ""){
+        var imageArray = <Loading/>
       }
       else {
-        var postArray = this.state.post.map(function(index, item){
-           return <Image key={index} item={item}/>
+        var imageArray = this.state.images.map(function(imageObj, index){
+           return <Image key={index} imageObj={imageObj}/>
         });
 
       }
         return(
           <div className="content">
-            <h2>Title</h2>
-            <div className="title">{this.state.title}</div>
-            <h2>Challenge details</h2>
-            {postArray}
+            <h3>Find new images to for wallpapers</h3>
+            <h2>Images</h2>
+            {imageArray}
           </div>
       );
     }

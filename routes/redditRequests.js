@@ -4,7 +4,7 @@ var router = express.Router();
 var snoowrap = require('snoowrap');
 
 const r = new snoowrap({
-  userAgent: 'random daily programmer challenge',
+  userAgent: 'view images from r/wallpapers',
   clientId: process.env.clientId,
   clientSecret: process.env.clientSecret,
   refreshToken: process.env.refreshToken
@@ -21,14 +21,21 @@ router.get('/images', function(req, res, next){
 
     var daily = r.getSubreddit('wallpapers');
 
-    daily.getTop({"time":"week"}).then(submission => {
-      var postTitle = submission.title;
-      var postId = submission.id;
-      var challengeObj = {
-        title:postTitle
-      }
-      res.json(challengeObj);
+    var imagesArr = [];
+
+    daily.getTop({time:"week"}).then(submission => {
+      submission.map(function(el, map){
+        var postTitle = el.title;
+        var postURL = el.url;
+        var imageObj = {
+          title:postTitle,
+          url:postURL
+        }
+        imagesArr.push(imageObj);
+      });
+      res.json(imagesArr);
     });
 });
 
 module.exports = router;
+

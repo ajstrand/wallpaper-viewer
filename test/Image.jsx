@@ -4,14 +4,16 @@ class Image extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      text:props.item
+      url:props.imageObj.url,
+      title:props.imageObj.title
     }
   }
     render() {
         return(
-          <div>
-            {this.state.text}
-        </div>
+          <div className="imageCont">
+            <div>{this.state.title}</div>
+            <img src={this.state.url} alt="an image"/>
+          </div>
       );
     }
 };
