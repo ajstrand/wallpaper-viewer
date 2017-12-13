@@ -48,7 +48,9 @@ class Images extends React.Component {
     return (
       <div className="content">
         <h3>Find new images to for wallpapers</h3>
-        <h2>Images</h2>
+        <h2>
+          Right click an image and select "open in a new tab" to save an image
+        </h2>
         {imageArray}
       </div>
     );

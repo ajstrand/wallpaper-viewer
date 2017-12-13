@@ -32639,7 +32639,7 @@
 	        _react2.default.createElement(
 	          "h2",
 	          null,
-	          "Images"
+	          "Right click an image and select \"open in a new tab\" to save an image"
 	        ),
 	        imageArray
 	      );
