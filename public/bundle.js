@@ -22227,10 +22227,10 @@
 /* 188 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -22256,40 +22256,32 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var App = function (_React$Component) {
-	    _inherits(App, _React$Component);
+	  _inherits(App, _React$Component);
 	
-	    function App() {
-	        _classCallCheck(this, App);
+	  function App() {
+	    _classCallCheck(this, App);
 	
-	        var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
+	    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
+	  }
 	
-	        _this.state = {
-	            title: '',
-	            post: ''
-	        };
-	        return _this;
+	  _createClass(App, [{
+	    key: "componentDidMount",
+	    value: function componentDidMount() {
+	      document.title = "View wallpapers";
 	    }
+	  }, {
+	    key: "render",
+	    value: function render() {
+	      return _react2.default.createElement(
+	        "div",
+	        { className: "container" },
+	        _react2.default.createElement(_Images2.default, { url: "api/images" })
+	      );
+	    }
+	  }]);
 	
-	    _createClass(App, [{
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            document.title = "View wallpapers";
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                'div',
-	                { className: 'container' },
-	                _react2.default.createElement(_Images2.default, { url: 'api/images' })
-	            );
-	        }
-	    }]);
-	
-	    return App;
+	  return App;
 	}(_react2.default.Component);
-	
-	;
 	
 	exports.default = App;
 
@@ -32556,7 +32548,7 @@
 /* 190 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -32595,40 +32587,39 @@
 	    var _this = _possibleConstructorReturn(this, (Images.__proto__ || Object.getPrototypeOf(Images)).call(this, props));
 	
 	    _this.state = {
-	      images: ''
+	      images: ""
 	    };
 	    _this.loadImages = _this.loadImages.bind(_this);
 	    return _this;
 	  }
 	
 	  _createClass(Images, [{
-	    key: 'componentDidMount',
+	    key: "componentDidMount",
 	    value: function componentDidMount(nextProps) {
 	      this.loadImages();
 	    }
 	  }, {
-	    key: 'loadImages',
+	    key: "loadImages",
 	    value: function loadImages() {
 	      _jquery2.default.ajax({
-	        type: 'GET',
-	        dataType: 'json',
+	        type: "GET",
+	        dataType: "json",
 	        url: this.props.url,
 	        success: function (data) {
 	          if (data !== null && data !== undefined) {
-	            console.log(data);
 	            this.setState({ images: data });
 	          } else {
-	            (0, _jquery2.default)('body').append('<p>could not get data from reddit api</p>');
+	            (0, _jquery2.default)("body").append("<p>could not get data from reddit api</p>");
 	          }
 	        }.bind(this),
 	        error: function (xhr, status, err) {
 	          console.warn(xhr.responseText);
-	          console.error("please check your console for errors " + status + ' ' + err);
+	          console.error("please check your console for errors " + status + " " + err);
 	        }.bind(this)
 	      });
 	    }
 	  }, {
-	    key: 'render',
+	    key: "render",
 	    value: function render() {
 	      if (this.state.images === null || this.state.images === undefined || this.state.images === "") {
 	        var imageArray = _react2.default.createElement(Loading, null);
@@ -32638,17 +32629,17 @@
 	        });
 	      }
 	      return _react2.default.createElement(
-	        'div',
-	        { className: 'content' },
+	        "div",
+	        { className: "content" },
 	        _react2.default.createElement(
-	          'h3',
+	          "h3",
 	          null,
-	          'Find new images to for wallpapers'
+	          "Find new images to for wallpapers"
 	        ),
 	        _react2.default.createElement(
-	          'h2',
+	          "h2",
 	          null,
-	          'Images'
+	          "Images"
 	        ),
 	        imageArray
 	      );
@@ -32657,8 +32648,6 @@
 	
 	  return Images;
 	}(_react2.default.Component);
-	
-	;
 	
 	exports.default = Images;
 
@@ -32719,8 +32708,6 @@
 	
 	  return Image;
 	}(_react2.default.Component);
-	
-	;
 	
 	exports.default = Image;
 
