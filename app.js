@@ -7,7 +7,6 @@ var bodyParser = require('body-parser');
 var helmet = require('helmet');
 
 var index = require('./routes/index');
-var users = require('./routes/users');
 var redditRequests = require('./routes/redditRequests');
 
 
