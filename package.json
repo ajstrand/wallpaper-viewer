@@ -6,6 +6,7 @@
     "webpack-watch": "webpack -w",
     "debug-mode": "node --inspect ./bin/www",
     "express-server": "node ./bin/www",
+    "start":"node ./bin/www",
     "dev": "concurrent --kill-others \"npm run webpack-watch\" \"npm run express-server\"",
     "debug": "concurrent --kill-others \"npm run webpack-watch\" \"npm run debug-mode\"",
     "test": "echo \"Error: no test specified\" && exit 1"
